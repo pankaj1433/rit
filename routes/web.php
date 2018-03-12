@@ -20,3 +20,5 @@ Route::get('/', 'Auth\LoginController@showLoginForm')->name('login');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/application-form', 'ApplicationForm@create')->name('ApplicationForm.create');
+Route::post('/application-form', 'ApplicationForm@store')->name('ApplicationForm.store');

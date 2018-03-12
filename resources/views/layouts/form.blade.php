@@ -15,7 +15,7 @@
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
     <link href="{{ asset('css/customstyles.css') }}" rel="stylesheet">
 </head>
-<body>
+<body class="form-body">
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
@@ -65,7 +65,6 @@
                                             {{ csrf_field() }}
                                         </form>
                                     </li>
-                                    <li>{!! link_to_route('ApplicationForm.create','Application Form') !!}</li>
                                 </ul>
                             </li>
                         @endguest

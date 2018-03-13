@@ -9,6 +9,9 @@
     </div>
     <div class="row"> 
         <div class="col-md-12">
+                <div class="flash-msg">
+                        @include('flash::message')
+                </div>
                 @if ($errors->any())
                     <div class="row">
                         <div class="col-md-12 alert alert-danger">

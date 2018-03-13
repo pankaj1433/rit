@@ -8,6 +8,7 @@ use App\FundingSource;
 use App\RadioButtons;
 use App\RadioButtonOptions;
 use App\EducationStatus;
+use App\ApplicationFormModel;
 
 class ApplicationForm extends Controller
 {
@@ -19,6 +20,13 @@ class ApplicationForm extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+    }
+
+    /**
+     * Checks for exisiting application in the database.
+     */
+    private function doesExist($application_id){
+        return (ApplicationFormModel::where('application_id', $application_id)->count() > 0)?true:false;
     }
 
     /**
@@ -68,9 +76,7 @@ class ApplicationForm extends Controller
     }
 
     /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
+     * Creates the Application Form.
      */
     public function create()
     {
@@ -81,19 +87,23 @@ class ApplicationForm extends Controller
     }
 
     /**
-     * 
+     * Saves the Application form into the database
      */
     public function store(ApplicationFormRequest $request)
     {
-        $data = [];
+        //check if the record already exist in the database.
+        if ( $this->doesExist($request->get('application_id'))) {
+            flash('Application Id exist!')->error();
+            return redirect()->route('ApplicationForm.create');
+        }
 
-        $data['application_id'] = $request->get('application_id');
-        $data['application_date'] = $request->get('application_date');
-        $data['enrollment_date'] = $request->get('enrollment_date');
-        $data['assigned_agency'] = $request->get('assigned_agency');
-        $data['current_status'] = $request->get('current_status');
+        $form_object = new ApplicationFormModel;
+        $form_object->application_id = $request->get('application_id');
+        $form_object->data_json = json_encode($request->all());
 
-        //flash('Your data has been saved!')->success();
+        $form_object->save();
+
+        flash('Your data has been saved!')->success();
         return redirect()->route('ApplicationForm.create');
     }
 }

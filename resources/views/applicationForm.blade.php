@@ -78,11 +78,11 @@
                         <div class="row">
                             <div class="col-md-3 form-group">
                                     {{ Form::label('birth_date','Birth Date:',['class' => 'req']) }}<br>
-                                    {{ Form::date('birth_date',null,['class' => 'form-control']) }}
+                                    {{ Form::date('birth_date',null,['class' => 'form-control  birth']) }}
                             </div>
                             <div class="col-md-2 form-group">
                                     {{ Form::label('age','Age:',['class' => 'req']) }}<br>
-                                    {{ Form::text('age',null,['class' => 'form-control']) }}
+                                    {{ Form::text('age',null,['class' => 'form-control  age','disabled']) }}
                             </div>
                             <div class="col-md-4 form-group">
                                     {{ Form::label('gender','Gender:',['class' => 'req']) }}<br>

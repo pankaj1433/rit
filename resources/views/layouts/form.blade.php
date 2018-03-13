@@ -79,5 +79,6 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/form.js') }}"></script>
+    <script src="http://momentjs.com/downloads/moment.js"></script>
 </body>
 </html>

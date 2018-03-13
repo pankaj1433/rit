@@ -100,7 +100,7 @@ class ApplicationForm extends Controller
                             ->orderBy('sort_key')
                             ->get(['label'])
                             ->toArray();
-        $ethinicity[1] = '-- Select Education Status --';
+        $ethinicity[1] = '-- Select Ethinicity --';
         foreach($ethinicity_temp as $data) {
             $ethinicity[$data['label']] = $data['label'];
         }

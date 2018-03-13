@@ -23,3 +23,6 @@ full-width {
 .form-body {
     background-color: #e0d2b8;
 }
+.form-body input[type="date"] {
+    background-color: #e0d2b8;
+}

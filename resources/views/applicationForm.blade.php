@@ -128,21 +128,25 @@
                                     {{ Form::label('alien_doc','Alien Doc#:',['class' => 'req']) }}<br>
                                     {{ Form::text('alien_doc',null,['class' => 'form-control']) }}
                             </div>
-                            <div class="col-md-4 form-group">
+                            <div class="col-md-2 form-group">
                                     {{ Form::label('race','Race:',['class' => 'req']) }}<br>
                                     {{ Form::text('race',null,['class' => 'form-control']) }}
                             </div>
-                            <div class="col-md-2 form-group">
-                                    {{ Form::label('unincorporated_area','Unincorporated Area:') }}<br>
-                                    {{ Form::radio('unincorporated_area','Yes') }} Yes 
-                                    {{ Form::radio('unincorporated_area','No') }} No
+                            <div class="col-md-4 form-group">
+                                {{ Form::label('ethinicity','Ethinicity:',['class' => 'req']) }}<br>
+                                {{ Form::select('ethinicity',[1=>"-- Select Ethinicity --"],null,['class' => 'form-control full-width']) }}
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-4 form-group">
-                                    {{ Form::label('email_address','Email Address:',['class' => 'req']) }}<br>
-                                    {{ Form::text('email_address',null,['class' => 'form-control']) }}
-                            </div>
+                                <div class="col-md-2 form-group">
+                                        {{ Form::label('unincorporated_area','Unincorporated Area:') }}<br>
+                                        {{ Form::radio('unincorporated_area','Yes') }} Yes 
+                                        {{ Form::radio('unincorporated_area','No') }} No
+                                </div>
+                                <div class="col-md-4 form-group">
+                                        {{ Form::label('email_address','Email Address:',['class' => 'req']) }}<br>
+                                        {{ Form::text('email_address',null,['class' => 'form-control']) }}
+                                </div>
                         </div>
                 </div>
             </div>

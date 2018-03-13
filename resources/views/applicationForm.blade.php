@@ -128,13 +128,13 @@
                                     {{ Form::label('alien_doc','Alien Doc#:',['class' => 'req']) }}<br>
                                     {{ Form::text('alien_doc',null,['class' => 'form-control']) }}
                             </div>
-                            <div class="col-md-2 form-group">
-                                    {{ Form::label('race','Race:',['class' => 'req']) }}<br>
-                                    {{ Form::text('race',null,['class' => 'form-control']) }}
+                            <div class="col-md-3 form-group">
+                                        {{ Form::label('race','Race:',['class' => 'req']) }}<br>
+                                        {{ Form::select('race',$race,null,['class' => 'form-control full-width']) }}
                             </div>
-                            <div class="col-md-4 form-group">
+                            <div class="col-md-3 form-group">
                                 {{ Form::label('ethinicity','Ethinicity:',['class' => 'req']) }}<br>
-                                {{ Form::select('ethinicity',[1=>"-- Select Ethinicity --"],null,['class' => 'form-control full-width']) }}
+                                {{ Form::select('ethinicity',$ethinicity,null,['class' => 'form-control full-width']) }}
                             </div>
                         </div>
                         <div class="row">

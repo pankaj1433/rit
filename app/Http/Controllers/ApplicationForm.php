@@ -9,6 +9,8 @@ use App\RadioButtons;
 use App\RadioButtonOptions;
 use App\EducationStatus;
 use App\ApplicationFormModel;
+use App\RaceModel;
+use App\EthinicityModel;
 
 class ApplicationForm extends Controller
 {
@@ -76,6 +78,36 @@ class ApplicationForm extends Controller
     }
 
     /**
+     * Returns Race from model.
+     */
+    private function race() {
+        $race_temp = RaceModel::where('active', 'yes')
+                            ->orderBy('sort_key')
+                            ->get(['label'])
+                            ->toArray();
+        $race[1] = '-- Select Race --';
+        foreach($race_temp as $data) {
+            $race[$data['label']] = $data['label'];
+        }
+        return $race;
+    }
+
+    /**
+     * Returns Ethinicity from model.
+     */
+    private function ethinicity() {
+        $ethinicity_temp = EthinicityModel::where('active', 'yes')
+                            ->orderBy('sort_key')
+                            ->get(['label'])
+                            ->toArray();
+        $ethinicity[1] = '-- Select Education Status --';
+        foreach($ethinicity_temp as $data) {
+            $ethinicity[$data['label']] = $data['label'];
+        }
+        return $ethinicity;
+    }
+
+    /**
      * Creates the Application Form.
      */
     public function create()
@@ -83,6 +115,8 @@ class ApplicationForm extends Controller
         return view('applicationForm')
                     ->with('funding_source',$this->fundingSource())
                     ->with('radio_buttons',$this->radioButtons())
+                    ->with('race',$this->race())
+                    ->with('ethinicity',$this->ethinicity())
                     ->with('education_status',$this->educationStatus());
     }
 

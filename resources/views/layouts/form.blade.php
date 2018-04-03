@@ -50,6 +50,16 @@
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                                    SYSTEM USERS <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>{!! link_to_route('userResponsibility.show','WDACS System admin') !!}</li>
+                                    <li>{!! link_to_route('userResponsibility.show','Agency admin') !!}</li>
+                                    <li>{!! link_to_route('userResponsibility.show','Agency user') !!}</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 

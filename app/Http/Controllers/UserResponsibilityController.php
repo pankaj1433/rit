@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Validator;
 use Illuminate\Http\Request;
 use App\UserResponsibilityModel;
 
@@ -58,7 +59,9 @@ class UserResponsibilityController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user_resp = UserResponsibilityModel::where('id', $id)->get()->toArray();
+        return view('userResponsibiltyEdit')
+                    ->with('responsibility',$user_resp[0]);
     }
 
     /**
@@ -68,9 +71,29 @@ class UserResponsibilityController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $id = $request->get('id');
+        $validator = Validator::make($request->all(), [
+            'Application_Name' => 'required',
+            'User_Name' => 'required',
+            'Full_Name' => 'required',
+            'Responsibility' => 'required',
+            'Start_Date' => 'required',
+            'End_Date' => 'required',
+        ]);
+        if($validator->fails()) {
+            flash('All fields are required')->error();
+            return redirect()->route('userResponsibility.edit',['id'=>$id]);
+        }
+        $updated = $request->all();
+        unset($updated['_token']);
+        unset($updated['id']);
+        $form_object = new UserResponsibilityModel;
+        $affectedRows = UserResponsibilityModel::where('id', $id)->update($updated);
+        
+        flash('Updated')->success();
+        return redirect()->route('userResponsibility.edit',['id'=>$id]);
     }
 
     /**

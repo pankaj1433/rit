@@ -36,7 +36,7 @@
                                     <td>{{$responsibility['Responsibility']}}</td>
                                     <td>{{$responsibility['Start_Date']}}</td>
                                     <td>{{$responsibility['End_Date']}}</td>
-                                    <td>Edit_User_Responsibility</td>
+                                <td><a href="{{ route('userResponsibility.edit',['id'=>$responsibility['id']]) }}">Edit User Responsibility</a></td>
                                 </tr>
                             @endforeach
                         </tbody>

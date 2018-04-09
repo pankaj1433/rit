@@ -10,7 +10,7 @@ use App\UserResponsibilityModel;
 class UserResponsibilityController extends Controller
 {
 
-    public $pages_to_show = 1;
+    public $pages_to_show = 10;
     /**
      * Display a listing of the resource.
      *
@@ -105,7 +105,7 @@ class UserResponsibilityController extends Controller
                         ->orWhere('User_Name', '=', $search_value)
                         ->orWhere('Responsibility', '=', $search_value)
                         ->simplePaginate($this->pages_to_show)->toArray();
-                        // var_dump($user_resp);
+                        
         return !empty($user_resp['data']) ?
          view('userResponsibiltyShow')->with('responsibilities',$user_resp):
          view('userResponsibiltyShow')->with('responsibilities',[]);

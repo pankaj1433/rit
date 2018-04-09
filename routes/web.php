@@ -27,3 +27,9 @@ Route::post('/application-form', 'ApplicationForm@store')->name('ApplicationForm
 Route::get('/user-responsibility', 'UserResponsibilityController@show')->name('userResponsibility.show');
 Route::get('/user-responsibility/edit/{id}','UserResponsibilityController@edit')->name('userResponsibility.edit');
 Route::post('/user-responsibility', 'UserResponsibilityController@update')->name('userResponsibility.update');
+
+Route::get('/status-report', 'statusReport@show')->name('status.report');
+Route::get('/yep', 'yep@show')->name('yep');
+Route::get('/css-home', 'cssHome@show')->name('css.home');
+
+Route::get('/timesheet', 'timesheet@show')->name('timesheet');
